@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Building2, Shield, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
-import heroImage from "@/assets/harofe-25-render.jpg";
+import heroImage from "@/assets/harofe-25-render-with-logo.jpg";
+import originalHeroImage from "@/assets/harofe-25-render.jpg";
 import logo from "@/assets/logo.jpg";
 const features = [
   {
@@ -128,7 +129,7 @@ const Index = () => {
             </div>
             <div className="order-1 lg:order-2">
               <img 
-                src={heroImage} 
+                src={originalHeroImage} 
                 alt="הרופא 25 חיפה" 
                 className="w-full h-auto rounded-lg shadow-xl"
               />
