@@ -3,7 +3,7 @@ import { ArrowLeft, Building2, Shield, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/harofe-25-render.jpg";
-
+import logo from "@/assets/logo.jpg";
 const features = [
   {
     icon: Building2,
@@ -140,6 +140,11 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
+          <img 
+            src={logo} 
+            alt="גבריאלי מגורים" 
+            className="h-20 w-auto mx-auto mb-8 bg-white p-2 rounded"
+          />
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             מעוניינים לשמוע עוד?
           </h2>
