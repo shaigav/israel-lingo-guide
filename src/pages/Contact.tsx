@@ -167,36 +167,39 @@ const Contact = () => {
             {/* Contact Info */}
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">פרטי התקשרות</h2>
-              <div className="space-y-6 mb-12">
-                {contactInfo.map((info) => (
-                  <div key={info.label} className="flex items-start gap-4">
-                    <div className="bg-secondary p-3 rounded-lg">
-                      <info.icon className="h-6 w-6 text-accent" />
+              <div className="flex gap-12">
+                {/* Contact Details */}
+                <div className="space-y-6 flex-1">
+                  {contactInfo.map((info) => (
+                    <div key={info.label} className="flex items-start gap-4">
+                      <div className="bg-secondary p-3 rounded-lg">
+                        <info.icon className="h-6 w-6 text-accent" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
+                        {info.href ? (
+                          <a 
+                            href={info.href} 
+                            className="text-lg font-medium text-foreground hover:text-accent transition-colors"
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <p className="text-lg font-medium text-foreground">{info.value}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
-                      {info.href ? (
-                        <a 
-                          href={info.href} 
-                          className="text-lg font-medium text-foreground hover:text-accent transition-colors"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-lg font-medium text-foreground">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              {/* Logo */}
-              <div className="mt-12">
-                <img 
-                  src={logo} 
-                  alt="גבריאלי מגורים" 
-                  className="h-32 w-auto"
-                />
+                {/* Logo - Left Side */}
+                <div className="flex items-center justify-center">
+                  <img 
+                    src={logo} 
+                    alt="גבריאלי מגורים" 
+                    className="h-40 w-auto"
+                  />
+                </div>
               </div>
 
               {/* Map */}
