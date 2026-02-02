@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
-
+import logo from "@/assets/logo.jpg";
 const contactInfo = [
   {
     icon: Phone,
@@ -72,6 +72,11 @@ const Contact = () => {
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
+            <img 
+              src={logo} 
+              alt="גבריאלי מגורים" 
+              className="h-20 w-auto mx-auto mb-6"
+            />
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               צור קשר
             </h1>
