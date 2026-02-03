@@ -34,13 +34,13 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center">
         <div 
-          className="absolute inset-0 bg-cover bg-[center_-80px] md:bg-center"
+          className="absolute inset-0 bg-cover bg-[center_-50px] md:bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 md:bg-gradient-to-l md:from-background/95 md:via-background/70 md:to-transparent" />
         </div>
         
-        <div className="container mx-auto px-4 relative z-10 flex items-end md:items-center min-h-[90vh] pb-16 md:pb-0">
+        <div className="container mx-auto px-4 relative z-10 flex items-end md:items-center min-h-[90vh] pb-8 md:pb-0" style={{ paddingBottom: 'max(2rem, env(safe-area-inset-bottom, 2rem))' }}>
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in">
               יש על מי לבנות.
