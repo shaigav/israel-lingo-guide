@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Home, Car, Warehouse, Wifi, Wind, ArrowLeft, X } from "lucide-react";
+import { MapPin, Home, Car, Warehouse, Wifi, Wind, ArrowLeft, X, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Layout from "@/components/layout/Layout";
@@ -187,7 +187,7 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                     <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-primary border-b-8 border-b-transparent mr-[-4px]" />
+                      <Play className="h-8 w-8 text-primary fill-primary ml-1" />
                     </div>
                   </div>
                 </div>
