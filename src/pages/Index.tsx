@@ -34,13 +34,13 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center">
         <div 
-          className="absolute inset-0 bg-cover bg-[center_top] md:bg-center"
+          className="absolute inset-0 bg-cover bg-[center_-80px] md:bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-background/95 via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 md:bg-gradient-to-l md:from-background/95 md:via-background/70 md:to-transparent" />
         </div>
         
-        <div className="container mx-auto px-4 relative z-10 pt-48 md:pt-0">
+        <div className="container mx-auto px-4 relative z-10 flex items-end md:items-center min-h-[90vh] pb-16 md:pb-0">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in">
               יש על מי לבנות.
@@ -66,13 +66,22 @@ const Index = () => {
       {/* Features Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              למה גבריאלי מגורים?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              תפיסת עולם שונה בנוף הנדל"ן הישראלי - לא בנייה בסרט נע, אלא יצירה אישית ומוקפדת
-            </p>
+          {/* Styled Header Block */}
+          <div className="max-w-3xl mx-auto mb-16">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform -rotate-1" />
+              <div className="relative bg-primary p-8 md:p-10 rounded-lg shadow-xl text-center">
+                <div className="absolute -top-5 right-1/2 translate-x-1/2 w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                  <span className="text-accent-foreground text-xl font-bold">?</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 mt-2">
+                  למה גבריאלי מגורים?
+                </h2>
+                <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
+                  תפיסת עולם שונה בנוף הנדל"ן הישראלי - לא בנייה בסרט נע, אלא יצירה אישית ומוקפדת
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
