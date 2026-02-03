@@ -58,10 +58,12 @@ const Index = () => {
         </div>
         
         <div
-          className="container mx-auto px-4 relative z-10 flex items-end md:items-center min-h-[90vh] pb-4 md:pb-0"
+          className="container mx-auto px-4 relative z-10 flex items-center md:items-center min-h-[90vh] pb-0 md:pb-0"
           style={{
             minHeight: "calc(var(--app-vh, 1vh) * 90)",
-            paddingBottom: "max(0.75rem, env(safe-area-inset-bottom, 0.75rem))",
+            // Keep only the device safe-area inset (no extra bottom padding) since
+            // mobile browsers can report taller viewports and push the text too low.
+            paddingBottom: "max(0px, env(safe-area-inset-bottom, 0px))",
           }}
         >
           <div className="max-w-2xl">
