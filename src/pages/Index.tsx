@@ -52,10 +52,17 @@ const Index = () => {
       >
         <div 
           className="absolute inset-0 bg-cover bg-[center_-50px] md:bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
+          style={{ backgroundImage: `url(${originalHeroImage})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 md:bg-gradient-to-l md:from-background/95 md:via-background/70 md:to-transparent" />
         </div>
+        {/* Sharp logo overlay on building facade */}
+        <img 
+          src={logo} 
+          alt="" 
+          className="absolute top-[12%] right-[15%] md:top-[18%] md:right-[38%] w-[35%] md:w-[15%] max-w-[180px] h-auto z-[1] drop-shadow-lg"
+          style={{ filter: 'none' }}
+        />
         
         <div
           className="container mx-auto px-4 relative z-10 flex items-center md:items-center min-h-[90vh] pb-0 md:pb-0"
