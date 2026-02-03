@@ -72,6 +72,12 @@ const Contact = () => {
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
+            {/* Logo - Mobile Only */}
+            <img 
+              src={logo} 
+              alt="גבריאלי מגורים" 
+              className="h-24 w-auto mx-auto mb-6 md:hidden"
+            />
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               צור קשר
             </h1>
@@ -192,8 +198,8 @@ const Contact = () => {
                   ))}
                 </div>
 
-                {/* Logo - Left Side */}
-                <div className="flex items-center justify-center">
+                {/* Logo - Left Side (Desktop Only) */}
+                <div className="hidden md:flex items-center justify-center">
                   <img 
                     src={logo} 
                     alt="גבריאלי מגורים" 
