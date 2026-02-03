@@ -96,8 +96,8 @@ const Index = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform -rotate-1" />
               <div className="relative bg-card border border-border p-8 md:p-10 rounded-lg shadow-xl text-center">
-                <div className="absolute -top-5 right-1/2 translate-x-1/2 w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                  <span className="text-accent-foreground text-xl font-bold">?</span>
+              <div className="absolute -top-5 right-1/2 translate-x-1/2 w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                  <span className="text-accent-foreground text-xl font-bold">✓</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-2">
                   למה גבריאלי מגורים?
