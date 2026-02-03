@@ -70,14 +70,14 @@ const Index = () => {
           <div className="max-w-3xl mx-auto mb-16">
             <div className="relative">
               <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform -rotate-1" />
-              <div className="relative bg-primary p-8 md:p-10 rounded-lg shadow-xl text-center">
+              <div className="relative bg-card border border-border p-8 md:p-10 rounded-lg shadow-xl text-center">
                 <div className="absolute -top-5 right-1/2 translate-x-1/2 w-10 h-10 bg-accent rounded-full flex items-center justify-center">
                   <span className="text-accent-foreground text-xl font-bold">?</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 mt-2">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-2">
                   למה גבריאלי מגורים?
                 </h2>
-                <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                   תפיסת עולם שונה בנוף הנדל"ן הישראלי - לא בנייה בסרט נע, אלא יצירה אישית ומוקפדת
                 </p>
               </div>
