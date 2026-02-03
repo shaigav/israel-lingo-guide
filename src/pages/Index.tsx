@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Building2, Shield, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,10 +30,26 @@ const features = [
 ];
 
 const Index = () => {
+  useEffect(() => {
+    const setAppVh = () => {
+      // Fix inconsistent mobile viewport units (especially on Android) so the hero height
+      // matches the *visible* viewport and keeps the text closer to the facade logo.
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--app-vh", `${vh}px`);
+    };
+
+    setAppVh();
+    window.addEventListener("resize", setAppVh);
+    return () => window.removeEventListener("resize", setAppVh);
+  }, []);
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] min-h-[90svh] flex items-center">
+      <section
+        className="relative min-h-[90vh] flex items-center"
+        style={{ minHeight: "calc(var(--app-vh, 1vh) * 90)" }}
+      >
         <div 
           className="absolute inset-0 bg-cover bg-[center_-50px] md:bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
@@ -41,8 +58,11 @@ const Index = () => {
         </div>
         
         <div
-          className="container mx-auto px-4 relative z-10 flex items-end md:items-center min-h-[90vh] min-h-[90svh] pb-4 md:pb-0"
-          style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom, 1rem))" }}
+          className="container mx-auto px-4 relative z-10 flex items-end md:items-center min-h-[90vh] pb-4 md:pb-0"
+          style={{
+            minHeight: "calc(var(--app-vh, 1vh) * 90)",
+            paddingBottom: "max(0.75rem, env(safe-area-inset-bottom, 0.75rem))",
+          }}
         >
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in">
