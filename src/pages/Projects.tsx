@@ -3,6 +3,7 @@ import { MapPin, Home, Car, Warehouse, Wifi, Wind, ArrowLeft } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/harofe-25-render.jpg";
+import projectVideo from "@/assets/harofe-25-video.mp4";
 const specifications = [{
   icon: Wind,
   label: "מיזוג VRF"
@@ -145,6 +146,14 @@ const Projects = () => {
           <h2 className="text-2xl font-bold text-foreground mb-8">גלריית הדמיות</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <img src={heroImage} alt="הדמיית הפרויקט" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
+            <video 
+              src={projectVideo} 
+              controls 
+              className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow"
+              poster={heroImage}
+            >
+              הדפדפן שלך אינו תומך בתגית וידאו.
+            </video>
           </div>
         </div>
       </section>
