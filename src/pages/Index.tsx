@@ -66,7 +66,7 @@ const Index = () => {
             paddingBottom: "max(0px, env(safe-area-inset-bottom, 0px))",
           }}
         >
-          <div className="max-w-2xl">
+          <div className="max-w-2xl translate-y-16 md:translate-y-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in">
               יש על מי לבנות.
             </h1>
