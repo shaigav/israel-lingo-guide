@@ -3,6 +3,8 @@ import { MapPin, Home, Car, Warehouse, Wifi, Wind, ArrowLeft } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/harofe-25-render.jpg";
+import render2 from "@/assets/harofe-25-render-2.jpg";
+import render3 from "@/assets/harofe-25-render-3.jpg";
 import projectVideo from "@/assets/harofe-25-video.mp4";
 const specifications = [{
   icon: Wind,
@@ -145,7 +147,9 @@ const Projects = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-foreground mb-8">גלריית הדמיות</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <img src={heroImage} alt="הדמיית הפרויקט" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
+            <img src={heroImage} alt="הדמיית הפרויקט - מבט חזית" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
+            <img src={render2} alt="הדמיית הפרויקט - מבט אווירי מזרחי" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
+            <img src={render3} alt="הדמיית הפרויקט - מבט אווירי מערבי" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
             <video 
               src={projectVideo} 
               controls 
