@@ -1,11 +1,26 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Home, Car, Warehouse, Wifi, Wind, ArrowLeft } from "lucide-react";
+import { MapPin, Home, Car, Warehouse, Wifi, Wind, ArrowLeft, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/harofe-25-render.jpg";
 import render2 from "@/assets/harofe-25-render-2.jpg";
 import render3 from "@/assets/harofe-25-render-3.jpg";
 import projectVideo from "@/assets/harofe-25-video.mp4";
+
+type MediaItem = {
+  type: 'image' | 'video';
+  src: string;
+  alt: string;
+};
+
+const galleryItems: MediaItem[] = [
+  { type: 'image', src: heroImage, alt: 'הדמיית הפרויקט - מבט חזית' },
+  { type: 'image', src: render2, alt: 'הדמיית הפרויקט - מבט אווירי מזרחי' },
+  { type: 'image', src: render3, alt: 'הדמיית הפרויקט - מבט אווירי מערבי' },
+  { type: 'video', src: projectVideo, alt: 'סרטון הדמיית הפרויקט' },
+];
 const specifications = [{
   icon: Wind,
   label: "מיזוג VRF"
@@ -33,6 +48,8 @@ const apartmentTypes = [{
   count: 11
 }];
 const Projects = () => {
+  const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
+
   return <Layout>
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-end">
@@ -147,20 +164,66 @@ const Projects = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-foreground mb-8">גלריית הדמיות</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <img src={heroImage} alt="הדמיית הפרויקט - מבט חזית" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
-            <img src={render2} alt="הדמיית הפרויקט - מבט אווירי מזרחי" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
-            <img src={render3} alt="הדמיית הפרויקט - מבט אווירי מערבי" className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" />
-            <video 
-              src={projectVideo} 
-              controls 
-              className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow"
-              poster={heroImage}
-            >
-              הדפדפן שלך אינו תומך בתגית וידאו.
-            </video>
+            {galleryItems.map((item, index) => (
+              item.type === 'image' ? (
+                <img 
+                  key={index}
+                  src={item.src} 
+                  alt={item.alt} 
+                  className="w-full aspect-video object-cover rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer hover:scale-[1.02]" 
+                  onClick={() => setSelectedMedia(item)}
+                />
+              ) : (
+                <div 
+                  key={index}
+                  className="relative w-full aspect-video rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer hover:scale-[1.02] overflow-hidden"
+                  onClick={() => setSelectedMedia(item)}
+                >
+                  <video 
+                    src={item.src} 
+                    className="w-full h-full object-cover"
+                    poster={heroImage}
+                    muted
+                  />
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-primary border-b-8 border-b-transparent mr-[-4px]" />
+                    </div>
+                  </div>
+                </div>
+              )
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={!!selectedMedia} onOpenChange={() => setSelectedMedia(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-none">
+          <button 
+            onClick={() => setSelectedMedia(null)}
+            className="absolute top-4 left-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          >
+            <X className="h-6 w-6 text-white" />
+          </button>
+          {selectedMedia?.type === 'image' ? (
+            <img 
+              src={selectedMedia.src} 
+              alt={selectedMedia.alt} 
+              className="w-full h-full object-contain max-h-[90vh]"
+            />
+          ) : selectedMedia?.type === 'video' ? (
+            <video 
+              src={selectedMedia.src} 
+              controls 
+              autoPlay
+              className="w-full h-full object-contain max-h-[90vh]"
+            >
+              הדפדפן שלך אינו תומך בתגית וידאו.
+            </video>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </Layout>;
 };
 export default Projects;
