@@ -3,7 +3,6 @@ import { ArrowLeft, Target, Eye, Heart, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import AnimatedStats from "@/components/AnimatedStats";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import logo from "@/assets/logo.jpg";
 import heroImage from "@/assets/harofe-25-render.jpg";
 
@@ -29,59 +28,6 @@ const values = [
     description: "כל פרויקט הוא יצירה ארכיטקטונית שאנחנו גאים לחתום עליה ומייצגת את הסטנדרטים שלנו.",
   },
 ];
-
-const VisionQuote = () => {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
-  
-  return (
-    <div 
-      ref={ref}
-      className={`relative transition-all duration-700 ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      }`}
-    >
-      <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform rotate-2" />
-      <div className="relative bg-primary p-10 rounded-lg shadow-xl">
-        <div className="absolute -top-6 -right-6 w-12 h-12 bg-accent rounded-full flex items-center justify-center">
-          <span className="text-accent-foreground text-2xl font-bold">"</span>
-        </div>
-        <blockquote className="text-xl font-medium text-primary-foreground leading-relaxed">
-          החזון שלנו פשוט: אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו – 
-          החל מבחירת המיקום המדויק, דרך תכנון הפנים החכם ועד למפרט הטכני העשיר ביותר. 
-          ב'גבריאלי מגורים', השקט הנפשי שלכם הוא יסוד הבניין שלנו.
-        </blockquote>
-      </div>
-    </div>
-  );
-};
-
-const ValueCard = ({ value, index }: { value: typeof values[0]; index: number }) => {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
-  
-  return (
-    <div 
-      ref={ref}
-      className={`group bg-card p-8 rounded-lg shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-accent/30 ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
-      <div className="flex items-start gap-4">
-        <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
-          <value.icon className="h-8 w-8 text-accent" />
-        </div>
-        <div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">{value.title}</h3>
-          <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const About = () => {
   return (
@@ -139,7 +85,19 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <VisionQuote />
+            <div className="relative">
+              <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform rotate-2" />
+              <div className="relative bg-primary p-10 rounded-lg shadow-xl">
+                <div className="absolute -top-6 -right-6 w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                  <span className="text-accent-foreground text-2xl font-bold">"</span>
+                </div>
+                <blockquote className="text-xl font-medium text-primary-foreground leading-relaxed">
+                  החזון שלנו פשוט: אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו – 
+                  החל מבחירת המיקום המדויק, דרך תכנון הפנים החכם ועד למפרט הטכני העשיר ביותר. 
+                  ב'גבריאלי מגורים', השקט הנפשי שלכם הוא יסוד הבניין שלנו.
+                </blockquote>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -164,7 +122,21 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {values.map((value, index) => (
-              <ValueCard key={value.title} value={value} index={index} />
+              <div 
+                key={value.title}
+                className="group bg-card p-8 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 border border-border hover:border-accent/30 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
+                    <value.icon className="h-8 w-8 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">{value.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
