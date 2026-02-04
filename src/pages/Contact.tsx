@@ -209,10 +209,10 @@ const Contact = () => {
               </div>
 
               {/* Map */}
-              <div>
+              <div className="mt-16">
                 <h3 className="text-xl font-bold text-foreground mb-4">מיקום המשרד</h3>
                 <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                  <iframe 
+                  <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.4721876743087!2d34.98744!3d32.78789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151dba2e0b0f0f0f%3A0x0!2zMzLCsDQ3JzE2LjQiTiAzNMKwNTknMTUuMCJF!5e0!3m2!1siw!2sil!4v1"
                     width="100%"
                     height="100%"
