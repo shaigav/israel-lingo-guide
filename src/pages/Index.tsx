@@ -94,9 +94,8 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-[center_-50px] md:bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 md:bg-gradient-to-l md:from-background/95 md:via-background/70 md:to-transparent" />
-        </div>
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 md:bg-gradient-to-l md:from-background/95 md:via-background/70 md:to-transparent" />
         
         <div
           className="container mx-auto px-4 relative z-10 flex items-center md:items-center min-h-[90vh] pb-0 md:pb-0"
