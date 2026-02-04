@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Building2, Shield, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import AnimatedStats from "@/components/AnimatedStats";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import heroImage from "@/assets/harofe-25-render-with-logo.jpg";
 import originalHeroImage from "@/assets/harofe-25-render.jpg";
+import ehud8Image from "@/assets/ehud-8-render.jpg";
 import logo from "@/assets/logo.jpg";
+
 const features = [
   {
     icon: Building2,
@@ -29,11 +33,48 @@ const features = [
   },
 ];
 
+const projects = [
+  {
+    id: "harofe-25",
+    title: "הרופא 25, חיפה",
+    status: "פרויקט בביצוע",
+    image: originalHeroImage,
+    description: "בניין יוקרתי בן 6 קומות על קו פרשת המים של רכס הכרמל, בשכונת אחוזה היוקרתית. 18 יחידות דיור עם נוף מרהיב לים ולמפרץ חיפה.",
+    features: ["18 יחידות דיור - 3 עד 5 חדרים", "דירות גן ופנטהאוז", "מפרט יוקרתי מלא"],
+  },
+  {
+    id: "ehud-8",
+    title: "אהוד 8, חיפה",
+    status: "פרויקט עתידי",
+    image: ehud8Image,
+    description: "פרויקט יוקרתי במרכז הכרמל. בנייה איכותית בסטנדרטים הגבוהים ביותר עם מפרט טכני עשיר.",
+    features: ["מיקום מרכזי בכרמל", "מפרט טכני עשיר", "תכנון אדריכלי מודרני"],
+  },
+];
+
+const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: number }) => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`bg-card p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-500 ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <feature.icon className="h-10 w-10 text-accent mb-4" />
+      <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
+      <p className="text-muted-foreground">{feature.description}</p>
+    </div>
+  );
+};
+
 const Index = () => {
   useEffect(() => {
     const setAppVh = () => {
-      // Fix inconsistent mobile viewport units (especially on Android) so the hero height
-      // matches the *visible* viewport and keeps the text closer to the facade logo.
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--app-vh", `${vh}px`);
     };
@@ -61,8 +102,6 @@ const Index = () => {
           className="container mx-auto px-4 relative z-10 flex items-center md:items-center min-h-[90vh] pb-0 md:pb-0"
           style={{
             minHeight: "calc(var(--app-vh, 1vh) * 90)",
-            // Keep only the device safe-area inset (no extra bottom padding) since
-            // mobile browsers can report taller viewports and push the text too low.
             paddingBottom: "max(0px, env(safe-area-inset-bottom, 0px))",
           }}
         >
@@ -91,83 +130,74 @@ const Index = () => {
       {/* Features Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
-          {/* Styled Header Block */}
-          <div className="max-w-3xl mx-auto mb-16">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform -rotate-1" />
-              <div className="relative bg-card border border-border p-8 md:p-10 rounded-lg shadow-xl text-center">
-              <div className="absolute -top-5 right-1/2 translate-x-1/2 w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                  <span className="text-accent-foreground text-xl font-bold">✓</span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-2">
-                  למה גבריאלי מגורים?
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  תפיסת עולם שונה בנוף הנדל"ן הישראלי - לא בנייה בסרט נע, אלא יצירה אישית ומוקפדת
-                </p>
-              </div>
-            </div>
+          {/* Section Header */}
+          <div className="max-w-3xl mx-auto mb-16 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              למה גבריאלי מגורים?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              תפיסת עולם שונה בנוף הנדל"ן הישראלי - לא בנייה בסרט נע, אלא יצירה אישית ומוקפדת
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div 
-                key={feature.title}
-                className="bg-card p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <feature.icon className="h-10 w-10 text-accent mb-4" />
-                <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </div>
+              <FeatureCard key={feature.title} feature={feature} index={index} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Project Section */}
+      {/* Animated Stats Section */}
+      <AnimatedStats />
+
+      {/* Projects Section */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block">
-                פרויקט חדש
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                הרופא 25, חיפה
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                בניין יוקרתי בן 6 קומות על קו פרשת המים של רכס הכרמל, בשכונת אחוזה היוקרתית. 
-                18 יחידות דיור עם נוף מרהיב לים ולמפרץ חיפה.
-              </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <div className="h-2 w-2 rounded-full bg-accent" />
-                  18 יחידות דיור - 3 עד 5 חדרים
-                </li>
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <div className="h-2 w-2 rounded-full bg-accent" />
-                  דירות גן ופנטהאוז
-                </li>
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <div className="h-2 w-2 rounded-full bg-accent" />
-                  מפרט יוקרתי מלא
-                </li>
-              </ul>
-              <Button asChild>
-                <Link to="/projects">
-                  לפרטים נוספים
-                  <ArrowLeft className="mr-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-            <div className="order-1 lg:order-2">
-              <img 
-                src={originalHeroImage} 
-                alt="הרופא 25 חיפה" 
-                className="w-full h-auto rounded-lg shadow-xl"
-              />
-            </div>
+          <div className="text-center mb-16">
+            <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block">
+              הפרויקטים שלנו
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              פרויקטים נבחרים
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {projects.map((project) => (
+              <div key={project.id} className="group">
+                <div className="relative overflow-hidden rounded-lg mb-6">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
+                    project.status === 'פרויקט בביצוע' 
+                      ? 'bg-accent text-accent-foreground' 
+                      : 'bg-muted text-muted-foreground'
+                  }`}>
+                    {project.status}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">{project.title}</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                <ul className="space-y-2 mb-6">
+                  {project.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3 text-muted-foreground">
+                      <div className="h-2 w-2 rounded-full bg-accent" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild variant="outline">
+                  <Link to="/projects">
+                    לפרטים נוספים
+                    <ArrowLeft className="mr-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
