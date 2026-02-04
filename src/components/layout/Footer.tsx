@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logoWhite from "@/assets/logo-white.png";
+import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Logo & Description */}
           <div>
-            <img src={logoWhite} alt="גבריאלי מגורים" className="h-20 w-auto mb-6" />
+            <img src={logo} alt="גבריאלי מגורים" className="h-16 w-auto mb-6 bg-white p-2 rounded" />
             <p className="text-primary-foreground/80 leading-relaxed">
               חברת בוטיק המתמחה בייזום ובנייה למגורים. אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו.
             </p>

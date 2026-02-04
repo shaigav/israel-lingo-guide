@@ -8,7 +8,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import heroImage from "@/assets/harofe-25-render-with-logo.jpg";
 import originalHeroImage from "@/assets/harofe-25-render.jpg";
 import ehud8Image from "@/assets/ehud-8-render.jpg";
-import logoWhite from "@/assets/logo-white.png";
+import logo from "@/assets/logo.jpg";
 
 const features = [
   {
@@ -206,9 +206,9 @@ const Index = () => {
       <section className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <img 
-            src={logoWhite} 
+            src={logo} 
             alt="גבריאלי מגורים" 
-            className="h-24 w-auto mx-auto mb-8"
+            className="h-20 w-auto mx-auto mb-8 bg-white p-2 rounded"
           />
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             מעוניינים לשמוע עוד?
