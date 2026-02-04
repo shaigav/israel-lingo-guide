@@ -183,11 +183,6 @@ const About = () => {
         </div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
-          <img 
-            src={logo} 
-            alt="גבריאלי מגורים" 
-            className="h-20 w-auto mx-auto mb-8 bg-white p-2 rounded"
-          />
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             מוכנים להכיר אותנו?
           </h2>
