@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-transparent.png";
 const contactInfo = [
   {
     icon: Phone,
@@ -199,11 +199,11 @@ const Contact = () => {
                 </div>
 
                 {/* Logo - Left Side (Desktop Only) */}
-                <div className="hidden md:flex items-center justify-center">
+                <div className="hidden md:flex items-center justify-center -ml-8">
                   <img 
                     src={logo} 
                     alt="גבריאלי מגורים" 
-                    className="h-40 w-auto"
+                    className="h-52 w-auto"
                   />
                 </div>
               </div>
