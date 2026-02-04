@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Target, Eye, Heart, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import AnimatedStats from "@/components/AnimatedStats";
 import logo from "@/assets/logo.jpg";
 import heroImage from "@/assets/harofe-25-render.jpg";
 
@@ -142,28 +143,7 @@ const About = () => {
       </section>
 
       {/* Stats/Trust Section */}
-      <section className="py-20 bg-card border-y border-border">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-2">18</div>
-              <div className="text-muted-foreground">יחידות דיור</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-2">6</div>
-              <div className="text-muted-foreground">קומות</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-2">100%</div>
-              <div className="text-muted-foreground">מחויבות לאיכות</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-2">1</div>
-              <div className="text-muted-foreground">פרויקט בביצוע</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AnimatedStats />
 
       {/* CTA Section */}
       <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
