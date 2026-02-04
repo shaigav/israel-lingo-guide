@@ -199,11 +199,11 @@ const Contact = () => {
                 </div>
 
                 {/* Logo - Left Side (Desktop Only) */}
-                <div className="hidden md:flex items-center justify-center mr-28">
+                <div className="hidden md:flex items-center justify-center mr-16">
                   <img 
                     src={logo} 
                     alt="גבריאלי מגורים" 
-                    className="h-72 w-auto"
+                    className="h-60 w-auto"
                   />
                 </div>
               </div>
