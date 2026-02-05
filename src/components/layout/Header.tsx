@@ -19,8 +19,17 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex-shrink-0">
+          {/* Mobile Menu Toggle - Left side on mobile */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+
+          {/* Logo - Centered on mobile, right on desktop */}
+          <Link to="/" className="flex-shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
             <img src={logo} alt="גבריאלי מגורים" className="h-20 w-auto" />
           </Link>
 
@@ -52,14 +61,8 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Spacer for mobile to balance the menu button */}
+          <div className="md:hidden w-10"></div>
         </div>
       </div>
 
