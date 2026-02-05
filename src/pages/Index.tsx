@@ -227,11 +227,6 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <img 
-            src={logo} 
-            alt="גבריאלי מגורים" 
-            className="h-20 w-auto mx-auto mb-8 bg-white p-2 rounded"
-          />
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             מעוניינים לשמוע עוד?
           </h2>
