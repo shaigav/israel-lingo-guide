@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import AnimatedStats from "@/components/AnimatedStats";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import heroVideo from "@/assets/hero-video.mp4";
+import heroVideo from "@/assets/harofe-hero-video.mp4";
 import originalHeroImage from "@/assets/harofe-25-render.jpg";
 import ehud8Image from "@/assets/ehud-8-render.jpg";
 import logo from "@/assets/logo.jpg";
