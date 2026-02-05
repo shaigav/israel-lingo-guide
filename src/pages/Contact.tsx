@@ -76,7 +76,7 @@ const Contact = () => {
             <img 
               src={logo} 
               alt="גבריאלי מגורים" 
-              className="h-24 w-auto mx-auto mb-6 md:hidden"
+              className="h-48 w-auto mx-auto mb-6 md:hidden"
             />
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               צור קשר
