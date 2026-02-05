@@ -98,7 +98,7 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              אודות גבריאלי מגורים
+              אודות
             </h1>
             <p className="text-xl text-primary-foreground/90 leading-relaxed">
               חברת בוטיק המתמחה בייזום ובנייה למגורים, עם תפיסת עולם שונה בנוף הנדל"ן הישראלי
