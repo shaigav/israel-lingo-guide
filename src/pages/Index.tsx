@@ -131,7 +131,7 @@ const Index = () => {
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
           {/* Section Header */}
-          <div className="max-w-3xl mx-auto mb-16 text-center">
+          <div className="max-w-3xl mx-auto mb-16 text-center hidden md:block">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               למה גבריאלי מגורים?
             </h2>
