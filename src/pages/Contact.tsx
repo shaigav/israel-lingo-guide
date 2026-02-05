@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
-
+import logo from "@/assets/logo-transparent.png";
 const contactInfo = [
   {
     icon: Phone,
@@ -168,30 +168,39 @@ const Contact = () => {
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">פרטי התקשרות</h2>
               <div className="flex gap-12">
-              {/* Contact Details */}
-              <div className="space-y-6">
-                {contactInfo.map((info) => (
-                  <div key={info.label} className="flex items-start gap-4">
-                    <div className="bg-secondary p-3 rounded-lg">
-                      <info.icon className="h-6 w-6 text-accent" />
+                {/* Contact Details */}
+                <div className="space-y-6 flex-1">
+                  {contactInfo.map((info) => (
+                    <div key={info.label} className="flex items-start gap-4">
+                      <div className="bg-secondary p-3 rounded-lg">
+                        <info.icon className="h-6 w-6 text-accent" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
+                        {info.href ? (
+                          <a 
+                            href={info.href} 
+                            className="text-lg font-medium text-foreground hover:text-accent transition-colors"
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <p className="text-lg font-medium text-foreground">{info.value}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
-                      {info.href ? (
-                        <a 
-                          href={info.href} 
-                          className="text-lg font-medium text-foreground hover:text-accent transition-colors"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-lg font-medium text-foreground">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Logo - Left Side (Desktop Only) */}
+                <div className="hidden md:flex items-center justify-center mr-16">
+                  <img 
+                    src={logo} 
+                    alt="גבריאלי מגורים" 
+                    className="h-60 w-auto"
+                  />
+                </div>
               </div>
-            </div>
 
               {/* Map */}
               <div className="mt-16">

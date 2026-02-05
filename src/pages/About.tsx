@@ -30,79 +30,30 @@ const values = [
   },
 ];
 
-const VisionSection = () => {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
-  
-  return (
-    <section className="py-24">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div 
-            ref={ref}
-            className={`transition-all duration-700 ${
-              isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block">
-              החזון שלנו
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              יש על מי לבנות.
-            </h2>
-            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
-              <p>
-                חברת 'גבריאלי מגורים' הוקמה מתוך תפיסת עולם שונה בנוף הנדל"ן הישראלי: 
-                אנחנו לא מאמינים בבנייה ב'סרט נע', אלא ביצירה אישית ומוקפדת.
-              </p>
-              <p>
-                כחברת בוטיק המתמחה בייזום ובנייה למגורים, שמנו לנו למטרה להעניק חוויית מגורים 
-                שמשלבת בין סטנדרט בנייה בלתי מתפשר, איתנות פיננסית של בנקים מובילים, 
-                ויחס אישי בגובה העיניים.
-              </p>
-              <p>
-                עבורנו, כל פרויקט ופרויקט הוא לא עוד שורה בטבלה, אלא יצירה ארכיטקטונית 
-                שאנחנו גאים לחתום עליה.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const VisionQuote = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
   
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <div 
-            ref={ref}
-            className={`relative transition-all duration-700 ${
-              isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform rotate-2" />
-            <div className="relative bg-primary p-10 rounded-lg shadow-xl">
-              <div className="absolute -top-6 -right-6 w-12 h-12 bg-accent rounded-full flex items-center justify-center">
-                <span className="text-accent-foreground text-2xl font-bold">"</span>
-              </div>
-              <blockquote className="text-xl font-medium text-primary-foreground leading-relaxed">
-                החזון שלנו פשוט: אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו – 
-                החל מבחירת המיקום המדויק, דרך תכנון הפנים החכם ועד למפרט הטכני העשיר ביותר. 
-                ב'גבריאלי מגורים', השקט הנפשי שלכם הוא יסוד הבניין שלנו.
-              </blockquote>
-            </div>
-          </div>
+    <div 
+      ref={ref}
+      className={`relative transition-all duration-700 ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-8'
+      }`}
+    >
+      <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform rotate-2" />
+      <div className="relative bg-primary p-10 rounded-lg shadow-xl">
+        <div className="absolute -top-6 -right-6 w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+          <span className="text-accent-foreground text-2xl font-bold">"</span>
         </div>
+        <blockquote className="text-xl font-medium text-primary-foreground leading-relaxed">
+          החזון שלנו פשוט: אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו – 
+          החל מבחירת המיקום המדויק, דרך תכנון הפנים החכם ועד למפרט הטכני העשיר ביותר. 
+          ב'גבריאלי מגורים', השקט הנפשי שלכם הוא יסוד הבניין שלנו.
+        </blockquote>
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -157,8 +108,36 @@ const About = () => {
       </section>
 
       {/* Vision Section */}
-      <VisionSection />
-      <VisionQuote />
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block">
+                החזון שלנו
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                יש על מי לבנות.
+              </h2>
+              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  חברת 'גבריאלי מגורים' הוקמה מתוך תפיסת עולם שונה בנוף הנדל"ן הישראלי: 
+                  אנחנו לא מאמינים בבנייה ב'סרט נע', אלא ביצירה אישית ומוקפדת.
+                </p>
+                <p>
+                  כחברת בוטיק המתמחה בייזום ובנייה למגורים, שמנו לנו למטרה להעניק חוויית מגורים 
+                  שמשלבת בין סטנדרט בנייה בלתי מתפשר, איתנות פיננסית של בנקים מובילים, 
+                  ויחס אישי בגובה העיניים.
+                </p>
+                <p>
+                  עבורנו, כל פרויקט ופרויקט הוא לא עוד שורה בטבלה, אלא יצירה ארכיטקטונית 
+                  שאנחנו גאים לחתום עליה.
+                </p>
+              </div>
+            </div>
+            <VisionQuote />
+          </div>
+        </div>
+      </section>
 
       {/* Values Section with alternating layout */}
       <section className="py-24 bg-secondary relative overflow-hidden">
