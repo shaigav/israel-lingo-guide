@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import AnimatedStats from "@/components/AnimatedStats";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import heroImage from "@/assets/harofe-25-render-with-logo.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 import originalHeroImage from "@/assets/harofe-25-render.jpg";
 import ehud8Image from "@/assets/ehud-8-render.jpg";
 import logo from "@/assets/logo.jpg";
@@ -91,10 +91,16 @@ const Index = () => {
         className="relative min-h-[90vh] flex items-center"
         style={{ minHeight: "calc(var(--app-vh, 1vh) * 90)" }}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-[center_-50px] md:bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 md:bg-gradient-to-l md:from-background/95 md:via-background/70 md:to-transparent" />
         </div>
         
