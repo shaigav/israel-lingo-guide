@@ -72,6 +72,53 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
   );
 };
 
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`group transition-all duration-500 ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      <div className="relative overflow-hidden rounded-lg mb-6">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
+          project.status === 'פרויקט בביצוע' 
+            ? 'bg-accent text-accent-foreground' 
+            : 'bg-muted text-muted-foreground'
+        }`}>
+          {project.status}
+        </span>
+      </div>
+      <h3 className="text-2xl font-bold text-foreground mb-3">{project.title}</h3>
+      <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+      <ul className="space-y-2 mb-6">
+        {project.features.map((feature, idx) => (
+          <li key={idx} className="flex items-center gap-3 text-muted-foreground">
+            <div className="h-2 w-2 rounded-full bg-accent" />
+            {feature}
+          </li>
+        ))}
+      </ul>
+      <Button asChild variant="outline">
+        <Link to="/projects">
+          לפרטים נוספים
+          <ArrowLeft className="mr-2 h-5 w-5" />
+        </Link>
+      </Button>
+    </div>
+  );
+};
+
 const Index = () => {
   useEffect(() => {
     const setAppVh = () => {
@@ -170,39 +217,8 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {projects.map((project) => (
-              <div key={project.id} className="group">
-                <div className="relative overflow-hidden rounded-lg mb-6">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
-                    project.status === 'פרויקט בביצוע' 
-                      ? 'bg-accent text-accent-foreground' 
-                      : 'bg-muted text-muted-foreground'
-                  }`}>
-                    {project.status}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                <ul className="space-y-2 mb-6">
-                  {project.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-muted-foreground">
-                      <div className="h-2 w-2 rounded-full bg-accent" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Button asChild variant="outline">
-                  <Link to="/projects">
-                    לפרטים נוספים
-                    <ArrowLeft className="mr-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
         </div>
