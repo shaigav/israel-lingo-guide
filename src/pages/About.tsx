@@ -97,11 +97,6 @@ const About = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <img 
-              src={logo} 
-              alt="גבריאלי מגורים" 
-              className="h-24 w-auto mx-auto mb-8 bg-white/95 p-3 rounded-lg shadow-lg"
-            />
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
               אודות גבריאלי מגורים
             </h1>
