@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import AnimatedStats from "@/components/AnimatedStats";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 import heroVideo from "@/assets/hero-video.mp4";
 import originalHeroImage from "@/assets/harofe-25-render.jpg";
 import ehud8Image from "@/assets/ehud-8-render.jpg";
@@ -58,14 +59,14 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
   return (
     <div 
       ref={ref}
-      className={`bg-card p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-500 ${
+      className={`bg-card p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-default group ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
+          : 'opacity-0 translate-y-12'
       }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <feature.icon className="h-10 w-10 text-accent mb-4" />
+      <feature.icon className="h-10 w-10 text-accent mb-4 transition-transform duration-300 group-hover:scale-110" />
       <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
       <p className="text-muted-foreground">{feature.description}</p>
     </div>
@@ -85,11 +86,11 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <div className="relative overflow-hidden rounded-lg mb-6">
+      <div className="relative overflow-hidden rounded-lg mb-6 shadow-md hover:shadow-xl transition-shadow duration-500">
         <img 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-[300px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
           project.status === 'פרויקט בביצוע' 
@@ -109,10 +110,10 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           </li>
         ))}
       </ul>
-      <Button asChild variant="outline">
+      <Button asChild variant="outline" className="group/btn hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300">
         <Link to="/projects">
           לפרטים נוספים
-          <ArrowLeft className="mr-2 h-5 w-5" />
+          <ArrowLeft className="mr-2 h-5 w-5 transition-transform duration-300 group-hover/btn:-translate-x-1" />
         </Link>
       </Button>
     </div>
@@ -120,6 +121,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 };
 
 const Index = () => {
+  const parallaxOffset = useParallax(0.3);
+
   useEffect(() => {
     const setAppVh = () => {
       const vh = window.innerHeight * 0.01;
@@ -135,7 +138,7 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section
-        className="relative min-h-[90vh] flex items-center"
+        className="relative min-h-[90vh] flex items-center snap-start"
         style={{ minHeight: "calc(var(--app-vh, 1vh) * 90)" }}
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -144,7 +147,8 @@ const Index = () => {
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover will-change-transform"
+            style={{ transform: `translateY(${parallaxOffset * 0.4}px) scale(1.1)` }}
           >
             <source src={heroVideo} type="video/mp4" />
           </video>
@@ -181,7 +185,7 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24 bg-secondary snap-start">
         <div className="container mx-auto px-4">
           {/* Section Header */}
           <div className="max-w-3xl mx-auto mb-16 text-center hidden md:block">
@@ -205,7 +209,7 @@ const Index = () => {
       <AnimatedStats />
 
       {/* Projects Section */}
-      <section className="py-24">
+      <section className="py-24 snap-start">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -225,7 +229,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary text-primary-foreground">
+      <section className="py-24 bg-primary text-primary-foreground snap-start">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             מעוניינים לשמוע עוד?

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useHeaderScroll } from "@/hooks/useHeaderScroll";
 import logo from "@/assets/logo-transparent.png";
 
 const navLinks = [
@@ -14,9 +15,14 @@ const navLinks = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const scrolled = useHeaderScroll();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled 
+        ? 'bg-background/98 backdrop-blur-md shadow-lg border-b border-border' 
+        : 'bg-background/80 backdrop-blur-sm border-b border-transparent'
+    }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Mobile Menu Toggle - Left side on mobile */}
