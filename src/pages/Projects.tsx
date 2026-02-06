@@ -4,6 +4,7 @@ import { MapPin, Home, Car, Warehouse, Wifi, Wind, ArrowLeft, X, Play } from "lu
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Layout from "@/components/layout/Layout";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import heroImage from "@/assets/harofe-25-render.jpg";
 import render2 from "@/assets/harofe-25-render-2.jpg";
 import render3 from "@/assets/harofe-25-render-3.jpg";
@@ -52,7 +53,7 @@ const Projects = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-end">
+      <section className="relative h-[60vh] flex items-end snap-start">
         <div className="absolute inset-0 bg-cover bg-center" style={{
         backgroundImage: `url(${heroImage})`
       }}>
@@ -60,13 +61,13 @@ const Projects = () => {
         </div>
         
         <div className="container mx-auto px-4 pb-12 relative z-10">
-          <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block">
+          <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block animate-fade-in">
             פרויקט בביצוע
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             הרופא 25, חיפה
           </h1>
-          <div className="flex items-center gap-2 text-muted-foreground">
+          <div className="flex items-center gap-2 text-muted-foreground animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <MapPin className="h-5 w-5" />
             <span>שכונת אחוזה, רמות הכרמל</span>
           </div>
@@ -74,7 +75,7 @@ const Projects = () => {
       </section>
 
       {/* Project Details */}
-      <section className="py-16">
+      <section className="py-16 snap-start">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
@@ -163,7 +164,7 @@ const Projects = () => {
       </section>
 
       {/* Gallery */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16 bg-secondary snap-start">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-foreground mb-8">גלריית הדמיות</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
