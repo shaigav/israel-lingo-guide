@@ -66,7 +66,10 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <feature.icon className="h-10 w-10 text-accent mb-4 transition-transform duration-300 group-hover:scale-110" />
+      <div className="relative mb-4">
+        <div className="absolute inset-0 bg-accent/20 rounded-full animate-icon-pulse-ring" />
+        <feature.icon className="h-10 w-10 text-accent animate-icon-float transition-transform duration-300 group-hover:scale-110 relative z-10" />
+      </div>
       <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
       <p className="text-muted-foreground">{feature.description}</p>
     </div>

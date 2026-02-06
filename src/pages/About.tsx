@@ -87,7 +87,7 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Section with Background */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-32 overflow-hidden snap-start">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
@@ -97,10 +97,10 @@ const About = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6 animate-fade-in">
               אודות
             </h1>
-            <p className="text-xl text-primary-foreground/90 leading-relaxed">
+            <p className="text-xl text-primary-foreground/90 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
               חברת בוטיק המתמחה בייזום ובנייה למגורים, עם תפיסת עולם שונה בנוף הנדל"ן הישראלי
             </p>
           </div>
@@ -108,7 +108,7 @@ const About = () => {
       </section>
 
       {/* Vision Section */}
-      <section className="py-24">
+      <section className="py-24 snap-start">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -140,7 +140,7 @@ const About = () => {
       </section>
 
       {/* Values Section with alternating layout */}
-      <section className="py-24 bg-secondary relative overflow-hidden">
+      <section className="py-24 bg-secondary relative overflow-hidden snap-start">
         <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full translate-x-1/2 translate-y-1/2" />
         
@@ -169,7 +169,7 @@ const About = () => {
       <AnimatedStats />
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden snap-start">
         <div className="absolute inset-0 opacity-10">
           <div 
             className="absolute inset-0 bg-cover bg-center"
