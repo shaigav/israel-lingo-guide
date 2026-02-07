@@ -36,6 +36,10 @@
     --input: 0 0% 90%;
     --ring: 0 0% 20%;
 
+    --footer: 220 25% 11%;
+    --footer-foreground: 220 15% 85%;
+    --footer-muted: 220 15% 55%;
+
     --radius: 0.25rem;
 
     --sidebar-background: 0 0% 98%;
