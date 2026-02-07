@@ -232,15 +232,15 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-secondary text-foreground snap-start">
+      <section className="py-20 bg-accent text-accent-foreground snap-start">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             מעוניינים לשמוע עוד?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-accent-foreground/80 mb-8 max-w-2xl mx-auto">
             השאירו פרטים ונציגנו יחזרו אליכם בהקדם
           </p>
-          <Button size="lg" asChild>
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
             <Link to="/contact">צרו קשר</Link>
           </Button>
         </div>
