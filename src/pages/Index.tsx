@@ -1,15 +1,18 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Building2, Shield, Users, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import AnimatedStats from "@/components/AnimatedStats";
+import StaggeredText from "@/components/StaggeredText";
+import MagneticButton from "@/components/MagneticButton";
+import ParallaxImage from "@/components/ParallaxImage";
+import StackingSection from "@/components/StackingSection";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { useParallax } from "@/hooks/useParallax";
 import heroVideo from "@/assets/hero-video.mp4";
 import originalHeroImage from "@/assets/harofe-25-render.jpg";
 import ehud8Image from "@/assets/ehud-8-render.jpg";
-import logo from "@/assets/logo.jpg";
 
 const features = [
   {
@@ -25,7 +28,7 @@ const features = [
   {
     icon: Users,
     title: "יחס אישי בגובה העיניים",
-    description: "כחברת בוטיק, אנו מעניקים יחס אישי לכל לקוח ולקוח",
+    description: "אנו מעניקים יחס אישי לכל לקוח ולקוח",
   },
   {
     icon: Sparkles,
@@ -57,75 +60,75 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
   
   return (
-    <div 
+    <motion.div 
       ref={ref}
-      className={`bg-card p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-default group ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-12'
-      }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="bg-card p-10 border border-border hover:border-accent/40 transition-all duration-500 cursor-default group"
     >
-      <div className="relative mb-4">
-        <div className="absolute inset-0 bg-accent/20 rounded-full animate-icon-pulse-ring" />
-        <feature.icon className="h-10 w-10 text-accent animate-icon-float transition-transform duration-300 group-hover:scale-110 relative z-10" />
+      <div className="relative mb-6">
+        <div className="w-12 h-12 border border-accent/30 flex items-center justify-center group-hover:bg-accent/10 transition-colors duration-500">
+          <feature.icon className="h-6 w-6 text-accent" />
+        </div>
       </div>
-      <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
-      <p className="text-muted-foreground">{feature.description}</p>
-    </div>
+      <h3 className="text-lg font-bold text-foreground mb-3 tracking-tight">{feature.title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+    </motion.div>
   );
 };
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 });
   
   return (
-    <div 
+    <motion.div 
       ref={ref}
-      className={`group transition-all duration-500 ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
+      initial={{ opacity: 0, y: 60 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay: index * 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="group"
     >
-      <div className="relative overflow-hidden rounded-lg mb-6 shadow-md hover:shadow-xl transition-shadow duration-500">
-        <img 
+      <div className="relative overflow-hidden mb-8">
+        <ParallaxImage 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-[300px] object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-[400px]"
+          speed={0.1}
         />
-        <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
+        <span className={`absolute top-6 right-6 px-4 py-1.5 text-xs font-semibold tracking-wider uppercase ${
           project.status === 'פרויקט בביצוע' 
             ? 'bg-accent text-accent-foreground' 
-            : 'bg-muted text-muted-foreground'
+            : 'bg-card text-muted-foreground border border-border'
         }`}>
           {project.status}
         </span>
       </div>
-      <h3 className="text-2xl font-bold text-foreground mb-3">{project.title}</h3>
-      <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-      <ul className="space-y-2 mb-6">
+      <h3 className="text-2xl font-bold text-foreground mb-3 tracking-tight">{project.title}</h3>
+      <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
+      <ul className="space-y-3 mb-8">
         {project.features.map((feature, idx) => (
-          <li key={idx} className="flex items-center gap-3 text-muted-foreground">
-            <div className="h-2 w-2 rounded-full bg-accent" />
+          <li key={idx} className="flex items-center gap-3 text-muted-foreground text-sm">
+            <div className="h-1.5 w-1.5 bg-accent" />
             {feature}
           </li>
         ))}
       </ul>
-      <Button asChild variant="outline" className="group/btn hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300">
-        <Link to="/projects">
-          לפרטים נוספים
-          <ArrowLeft className="mr-2 h-5 w-5 transition-transform duration-300 group-hover/btn:-translate-x-1" />
-        </Link>
-      </Button>
-    </div>
+      <MagneticButton>
+        <Button asChild variant="outline" className="border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300">
+          <Link to="/projects">
+            לפרטים נוספים
+            <ArrowLeft className="mr-2 h-4 w-4" />
+          </Link>
+        </Button>
+      </MagneticButton>
+    </motion.div>
   );
 };
 
-const Index = () => {
-  const parallaxOffset = useParallax(0.3);
+const TOTAL_SECTIONS = 5;
 
+const Index = () => {
   useEffect(() => {
     const setAppVh = () => {
       const vh = window.innerHeight * 0.01;
@@ -140,111 +143,145 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section
-        className="relative min-h-[90vh] flex items-center snap-start"
-        style={{ minHeight: "calc(var(--app-vh, 1vh) * 90)" }}
-      >
+      <StackingSection index={0} total={TOTAL_SECTIONS} className="flex items-center bg-background">
         <div className="absolute inset-0 overflow-hidden">
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover will-change-transform"
-            style={{ transform: `translateY(${parallaxOffset * 0.4}px) scale(1.1)` }}
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={heroVideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 md:bg-gradient-to-l md:from-background/95 md:via-background/70 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30 md:bg-gradient-to-l md:from-background/95 md:via-background/60 md:to-transparent" />
         </div>
         
-        <div
-          className="container mx-auto px-4 relative z-10 flex items-center md:items-center min-h-[90vh] pb-0 md:pb-0"
-          style={{
-            minHeight: "calc(var(--app-vh, 1vh) * 90)",
-            paddingBottom: "max(0px, env(safe-area-inset-bottom, 0px))",
-          }}
-        >
-          <div className="max-w-2xl translate-y-4 md:translate-y-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in">
-              יש על מי לבנות.
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: "0.2s" }}>
+        <div className="container mx-auto px-4 relative z-10 flex items-center min-h-[100vh] pt-20">
+          <div className="max-w-2xl">
+            <StaggeredText 
+              text="יש על מי לבנות." 
+              as="h1"
+              className="text-4xl md:text-5xl lg:text-7xl font-black text-foreground leading-tight mb-8 tracking-tight"
+            />
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-xl"
+            >
               חברה המתמחה בייזום ובנייה למגורים. אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <Button size="lg" asChild>
-                <Link to="/projects">
-                  לפרויקטים שלנו
-                  <ArrowLeft className="mr-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/contact">השאירו פרטים</Link>
-              </Button>
-            </div>
+            </motion.p>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="flex flex-wrap gap-4"
+            >
+              <MagneticButton>
+                <Button size="lg" asChild className="text-sm tracking-wider uppercase px-8">
+                  <Link to="/projects">
+                    לפרויקטים שלנו
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button size="lg" variant="outline" asChild className="text-sm tracking-wider uppercase px-8 border-foreground hover:bg-foreground hover:text-background">
+                  <Link to="/contact">השאירו פרטים</Link>
+                </Button>
+              </MagneticButton>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </StackingSection>
 
       {/* Features Section */}
-      <section className="py-24 bg-secondary snap-start">
-        <div className="container mx-auto px-4">
-          {/* Section Header */}
-          <div className="max-w-3xl mx-auto mb-16 text-center hidden md:block">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              למה גבריאלי מגורים?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+      <StackingSection index={1} total={TOTAL_SECTIONS} className="flex items-center bg-secondary">
+        <div className="container mx-auto px-4 py-32">
+          <div className="max-w-3xl mx-auto mb-20 text-center hidden md:block">
+            <StaggeredText 
+              text="למה גבריאלי מגורים?" 
+              as="h2"
+              className="text-3xl md:text-5xl font-black text-foreground mb-6 tracking-tight"
+            />
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            >
               תפיסת עולם שונה בנוף הנדל"ן הישראלי - לא בנייה בסרט נע, אלא יצירה אישית ומוקפדת
-            </p>
+            </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <FeatureCard key={feature.title} feature={feature} index={index} />
             ))}
           </div>
         </div>
-      </section>
+      </StackingSection>
 
       {/* Animated Stats Section */}
-      <AnimatedStats />
+      <StackingSection index={2} total={TOTAL_SECTIONS} className="flex items-center bg-background">
+        <div className="w-full">
+          <AnimatedStats />
+        </div>
+      </StackingSection>
 
       {/* Projects Section */}
-      <section className="py-24 snap-start">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4 block">
+      <StackingSection index={3} total={TOTAL_SECTIONS} className="flex items-center bg-background">
+        <div className="container mx-auto px-4 py-32">
+          <div className="text-center mb-20">
+            <motion.span 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-accent text-xs font-semibold tracking-[0.3em] uppercase mb-6 block"
+            >
               הפרויקטים שלנו
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              פרויקטים נבחרים
-            </h2>
+            </motion.span>
+            <StaggeredText 
+              text="פרויקטים נבחרים" 
+              as="h2"
+              className="text-3xl md:text-5xl font-black text-foreground tracking-tight"
+            />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {projects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
         </div>
-      </section>
+      </StackingSection>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary text-primary-foreground snap-start">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            מעוניינים לשמוע עוד?
-          </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+      <StackingSection index={4} total={TOTAL_SECTIONS} className="flex items-center bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 text-center py-32">
+          <StaggeredText 
+            text="מעוניינים לשמוע עוד?" 
+            as="h2"
+            className="text-3xl md:text-5xl font-black mb-8 tracking-tight"
+          />
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-xl text-primary-foreground/70 mb-10 max-w-2xl mx-auto"
+          >
             השאירו פרטים ונציגנו יחזרו אליכם בהקדם
-          </p>
-          <Button size="lg" variant="secondary" asChild>
-            <Link to="/contact">צרו קשר</Link>
-          </Button>
+          </motion.p>
+          <MagneticButton className="inline-block">
+            <Button size="lg" variant="secondary" asChild className="text-sm tracking-wider uppercase px-10">
+              <Link to="/contact">צרו קשר</Link>
+            </Button>
+          </MagneticButton>
         </div>
-      </section>
+      </StackingSection>
     </Layout>
   );
 };
