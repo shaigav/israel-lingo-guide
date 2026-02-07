@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <img src={logo} alt="גבריאלי מגורים" className="h-24 w-auto mb-6 bg-white p-3 rounded" />
             <p className="text-primary-foreground/80 leading-relaxed">
-              חברת בוטיק המתמחה בייזום ובנייה למגורים. אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו.
+              חברה המתמחה בייזום ובנייה למגורים. אנחנו מתכננים ובונים דירות שהיינו רוצים לגור בהן בעצמנו.
             </p>
           </div>
 
