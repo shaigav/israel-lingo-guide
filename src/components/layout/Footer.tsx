@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo-transparent.png";
+import logo from "@/assets/logo-white.png";
 
 const Footer = () => {
   return (
@@ -12,9 +12,6 @@ const Footer = () => {
             <h3 className="text-xl font-bold text-white mb-4">גבריאלי מגורים</h3>
             <p className="text-[hsl(220,15%,65%)] leading-relaxed mb-4">
               חברת בוטיק המתמחה בייזום ובנייה למגורים, בעל סטנדרט בנייה בלתי מתפשר.
-            </p>
-            <p className="text-[hsl(220,15%,55%)] text-sm italic">
-              יש על מי להסתמך בנדל"ן
             </p>
           </div>
 
@@ -58,8 +55,7 @@ const Footer = () => {
 
           {/* Logo */}
           <div className="md:order-1 flex flex-col items-center md:items-start">
-            <img src={logo} alt="גבריאלי מגורים" className="h-32 w-auto mb-3" />
-            <p className="text-[hsl(220,15%,55%)] text-sm italic">יש על מי לבנות.</p>
+            <img src={logo} alt="גבריאלי מגורים" className="h-64 w-auto mb-3" />
           </div>
         </div>
 
