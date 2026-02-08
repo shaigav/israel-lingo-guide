@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // הגדרת נתיב בסיס דינמי עבור GitHub Pages
 const basePath = process.env.VITE_APP_ENV === 'ci' ? '/israel-lingo-guide/' : '/';
 
-// https://vitejs.dev/config/
+// https://vitejs.dev
 export default defineConfig(({ mode }) => ({
   base: basePath,
   server: {
@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  plugins: [react(), mode === "development" && componentTagger()).filter(Boolean)],
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
