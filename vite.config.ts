@@ -19,3 +19,11 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+import { defineConfig } from 'vite'
+import react from '@vite/react-plugin'
+
+// https://vitejs.dev
+export default defineConfig({
+  base: '/israel-lingo-guide/', 
+  plugins: [react()],
+})
